@@ -1,0 +1,134 @@
+models:
+  - name: dim_vendor
+    description: "Vendor master table containing vendor IDs and names for taxi trips."
+
+
+
+############################
+# DIMENSION TABLE TESTS
+############################
+
+models:
+  - name: dim_vendor
+    columns:
+      - name: vendor_id
+        tests:
+          - not_null
+          - unique
+      - name: vendor_name
+        tests:
+          - not_null
+
+  - name: dim_rate_code
+    columns:
+      - name: rate_code_id
+        tests:
+          - not_null
+          - unique
+      - name: rate_code_description
+        tests:
+          - not_null
+
+  - name: dim_payment_type
+    columns:
+      - name: payment_type_id
+        tests:
+          - not_null
+          - unique
+      - name: payment_type_description
+        tests:
+          - not_null
+
+  - name: dim_location
+    columns:
+      - name: location_id
+        tests:
+          - not_null
+          - unique
+      - name: borough
+        tests:
+          - not_null
+      - name: zone
+        tests:
+          - not_null
+
+  - name: dim_datetime
+    columns:
+      - name: datetime_id
+        tests:
+          - not_null
+          - unique
+      - name: datetime_value
+        tests:
+          - not_null
+
+
+#############################################################
+# FACT TABLE TESTS
+#############################################################
+
+  - name: fact_trips
+    columns:
+
+      #########################
+      # Foreign key relationships
+      #########################
+
+      - name: vendor_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_vendor')
+              field: vendor_id
+
+      - name: rate_code_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_rate_code')
+              field: rate_code_id
+
+      - name: payment_type_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_payment_type')
+              field: payment_type_id
+
+      - name: pu_location_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_location')
+              field: location_id
+
+      - name: do_location_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_location')
+              field: location_id
+
+      #########################
+      # Important numeric fields
+      #########################
+
+      - name: fare_amount
+        tests:
+          - not_null
+
+      - name: total_amount
+        tests:
+          - not_null
+
+      #########################
+      # Time fields
+      #########################
+
+      - name: pickup_datetime
+        tests:
+          - not_null
+
+      - name: dropoff_datetime
+        tests:
+          - not_null

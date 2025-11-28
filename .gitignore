@@ -1,0 +1,54 @@
+# -------------------------------------------
+# Python & Virtual Environment
+# -------------------------------------------
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# -------------------------------------------
+# dbt
+# -------------------------------------------
+dbt_modules/
+dbt_packages/
+target/
+logs/
+*.log
+profiles.yml
+.env
+.env.*
+
+# Ignore dbt local metadata inside taxi_dbt
+taxi_dbt/target/
+taxi_dbt/logs/
+taxi_dbt/.user.yml
+
+# -------------------------------------------
+# Airflow
+# -------------------------------------------
+airflow_docker/logs/
+airflow_docker/plugins/
+airflow_docker/.env
+airflow_docker/config/airflow.cfg
+airflow_docker/config/variables.json
+airflow_docker/config/connections.json
+
+# -------------------------------------------
+# Data Files
+# -------------------------------------------
+data_raw/
+*.csv
+*.parquet
+
+# -------------------------------------------
+# OS files
+# -------------------------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------------------------
+# IDE files
+# -------------------------------------------
+.vscode/
+.idea/
