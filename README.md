@@ -5,7 +5,7 @@
 ![Airflow](https://img.shields.io/badge/Airflow-Orchestration-179bd3)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Data%20Warehouse-336791)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
 
 A complete end-to-end data engineering project using **dbt**, **PostgreSQL**, **Docker**, and **Airflow**.  
 The project builds a **modern analytics warehouse** and applies **ELT transformations** using the **NYC Yellow Taxi dataset (Jan 2023)**.
