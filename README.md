@@ -21,7 +21,19 @@ The project builds a **modern analytics warehouse** and applies **ELT transforma
    - A large fact table (`fact_trips`)
 3. dbt tests validate data quality and integrity.
 4. dbt Docs provides interactive documentation and DAG lineage.
-5. Airflow (optional) is used for future orchestration.
+5. Airflow orchestrates scheduled ingestion, dbt transformations, and data quality tests.
+
+---
+
+## Airflow Orchestration
+
+Apache Airflow is used to orchestrate the end-to-end pipeline, coordinating:
+- Batch ingestion of raw NYC Taxi data into a staging schema
+- dbt transformations to build warehouse-ready models
+- dbt tests to validate data quality and integrity
+
+The Airflow DAG defines task dependencies, scheduling, and pipeline order, while ingestion and transformation logic are implemented as standalone Python scripts and dbt models.
+
 
 ---
 
@@ -32,7 +44,7 @@ The project builds a **modern analytics warehouse** and applies **ELT transforma
 | Orchestration | Apache Airflow |
 | Data Warehouse | PostgreSQL |
 | Transformations | dbt Core |
-| Ingestion | Python (pandas, SQLAlchemy) |
+| Ingestion | Python (pandas, psycopg2, PostgreSQL COPY) |
 | Containerization | Docker & Docker Compose |
 | Documentation | dbt Docs |
 | Dataset | NYC Yellow Taxi 2023 |
@@ -41,7 +53,7 @@ The project builds a **modern analytics warehouse** and applies **ELT transforma
 
 ## Folder Structure
 ```txt
-009-DataWarehouse + ETL/
+nyc-taxi-datawarehouse-etl/
 │
 ├── airflow_docker/
 │
