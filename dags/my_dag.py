@@ -12,17 +12,17 @@ with DAG(
 
     ingest = BashOperator(
         task_id="ingest_raw_data",
-        bash_command="python /opt/airflow/scripts/ingest_taxi_to_postgres.py"
+        bash_command="python scripts/ingest_taxi_to_postgres.py"
     )
 
     dbt_run = BashOperator(
         task_id="dbt_run",
-        bash_command="cd /opt/airflow/taxi_dbt && dbt run"
+        bash_command="dbt run --project-dir taxi_dbt"
     )
 
     dbt_test = BashOperator(
         task_id="dbt_test",
-        bash_command="cd /opt/airflow/taxi_dbt && dbt test"
+        bash_command="dbt test --project-dir taxi_dbt"
     )
 
     ingest >> dbt_run >> dbt_test
