@@ -1,10 +1,11 @@
-# Data Warehouse & ETL Pipeline (NYC Taxi Data)
-
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 ![dbt](https://img.shields.io/badge/DBT-1.10-blue)
 ![Airflow](https://img.shields.io/badge/Airflow-Orchestration-179bd3)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Data%20Warehouse-336791)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
+
+# Data Warehouse & ETL Pipeline (NYC Taxi Data)
+
 
 
 A complete end-to-end data engineering project using **dbt**, **PostgreSQL**, **Docker**, and **Airflow**.  
